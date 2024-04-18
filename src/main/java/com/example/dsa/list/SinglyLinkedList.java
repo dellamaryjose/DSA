@@ -300,6 +300,39 @@ public class SinglyLinkedList<T> {
 	 
  }
  
+ public void removeLoop() {
+	 
+	Node<Integer> fastPtr =(Node<Integer>) head;
+	Node<Integer> slowPtr =(Node<Integer>) head;
+	
+	while(fastPtr!=null && fastPtr.next!=null) {
+		fastPtr = fastPtr.next.next;
+		slowPtr = slowPtr.next;
+		
+		if(fastPtr==slowPtr) {
+			System.out.println("Inside equals--");
+			remove(slowPtr);
+			return;
+		}
+		
+	}
+	
+	 
+ }
+ 
+ 
+ public void remove(Node<Integer> slowPtr) {
+	 System.out.println("Inside Remove--");
+	 Node<Integer> temp = (Node<Integer>) head;
+	 
+	 while(slowPtr.next!=temp.next) {
+		 slowPtr = slowPtr.next;
+		 temp = temp.next;
+	 }
+	  slowPtr.next = null;
+ }
+ 
+ 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
@@ -343,7 +376,11 @@ public class SinglyLinkedList<T> {
 		node5.next = node6;
 		node6.next =node3;
 		System.out.println(newList.isloop());
-		System.out.println("STRAT--"+newList.startOfLoop());
+		//System.out.println("STRAT--"+newList.startOfLoop());
+		newList.removeLoop();
+		//newList.printList(newList);
+		System.out.println("--"+newList.isloop());
+		newList.printList(newList);
 	
 	}
 
