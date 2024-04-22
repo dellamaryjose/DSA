@@ -83,4 +83,28 @@ public Node<T> deleteFirst() {
 	temp.next = null;
 	return temp;
 }
+
+public Node<T> deleteLast(){
+	Node<T> temp = tail;
+	if(head==null) {
+	 throw new NoSuchElementException();	
+		
+	}
+	
+	if(head==tail) {
+		System.out.println("true");
+		head= null;
+	}
+	else {
+		
+		tail.previous.next=null;
+	}
+	
+	
+	tail= tail.previous;
+	temp.previous=null;
+	return temp;
+	
+	
+}
 }

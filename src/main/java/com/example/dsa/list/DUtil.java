@@ -20,7 +20,11 @@ dl.insertLast(6);
 dl.insertLast(2);
 System.out.println(dl);
 
-dl.deleteFirst();
+//dl.deleteFirst();
+dl.deleteLast();
+System.out.println(dl);
+dl.deleteLast();
+dl.deleteLast();
 System.out.println(dl);
 	}
 
