@@ -8,7 +8,7 @@ public class StringValidator {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-String s="[({)}{}]";
+String s="{{}}";
 System.out.println(validate(s));
 	}
 
@@ -35,7 +35,6 @@ System.out.println(validate(s));
 					||(c==']'&& stack.peek()=='[')) {
 				
 				stack.pop();
-				flag = true;
 				
 			}
 			else {
@@ -47,7 +46,7 @@ System.out.println(validate(s));
 		}
 		
 		
-		return flag;
+		return stack.isEmpty();
 		
 	}
 }
