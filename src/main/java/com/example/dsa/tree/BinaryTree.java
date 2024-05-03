@@ -1,6 +1,9 @@
 package com.example.dsa.tree;
 
+import java.util.Queue;
 import java.util.Stack;
+import java.util.LinkedList;
+
 
 public class BinaryTree<T> {
 Node<T> root;
@@ -108,5 +111,109 @@ public void inOrderIterative(Node<T> root) {
 		
 	}
 	
+}
+
+public void postOrder(Node<T> root) {
+	
+	if(root==null) {
+		
+		return;
+	}
+	postOrder(root.left);
+	postOrder(root.right);
+	System.out.print(root.element+" ");
+}
+
+public void postOrderIterative(Node<T> root) {
+	
+if(root==null) {
+	
+	return;
+}	
+Stack<Node<T>> stack = new Stack();
+Node<T> current = root;
+
+while(current!=null || !stack.isEmpty()) {
+
+	if(current!=null) {
+		stack.push(current);
+		current = current.left;
+	}else {
+		
+		Node<T> temp = stack.peek().right;
+		
+		if(temp==null) {
+			temp = stack.pop();
+			System.out.print(temp.element+" ");
+			while(!stack.isEmpty()&&temp==stack.peek().right) {
+				
+				temp = stack.pop();
+				System.out.print(temp.element+" ");
+			}
+		}else {
+			
+			current = temp;
+		}
+	}
+	
+}
+
+
+}
+
+public void levelOrder(Node<T> root) {
+	if(root == null) {
+		return;
+	}
+	
+	Queue<Node<T>> queue = new LinkedList<>();
+	queue.offer(root);
+	Node<T> temp =null;
+	
+	while(!queue.isEmpty()) {
+		
+		temp = queue.poll();
+		System.out.print(temp.element+" ");
+		if(temp.left!=null) {
+			queue.offer(temp.left);
+		}
+		if(temp.right!=null) {
+			queue.offer(temp.right);
+		}
+	}
+	
+}
+
+public int findMax(Node<Integer> root) {
+	if(root==null) {
+		
+	return Integer.MIN_VALUE;	
+	}
+int result = root.element;
+int left = findMax(root.left);
+int right = findMax(root.right);
+	if(left>result) {
+		result = left;
+	}
+	if(right>result) {
+		result = right;
+	}
+	return result;
+}
+public int findMin(Node<Integer> root) {
+	if(root==null) {
+		
+	return Integer.MAX_VALUE;	
+	}
+int result = root.element;
+int left = findMin(root.left);
+int right = findMin(root.right);
+	if(left<result) {
+		result = left;
+	}
+	if(right<result) {
+		result = right;
+	}
+	return result;
 }
 }
