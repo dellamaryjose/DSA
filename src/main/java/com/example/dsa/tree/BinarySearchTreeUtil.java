@@ -14,7 +14,10 @@ bst.insertNode(bst.root, 2);
 bst.insertNode(bst.root, 5);
 bst.insertNode(bst.root, 10);
 bst.preOrder(bst.root);
-
+System.out.println("");
+bst.root.element=1;
+System.out.println("");
+bst.preOrder(bst.root);
 
 if(null !=(bst.search(bst.root, 7))) {
 	
@@ -23,6 +26,7 @@ if(null !=(bst.search(bst.root, 7))) {
 	System.out.println("Key NOT found");
 	
 }
+System.out.println("Is valid--"+bst.isValid(bst.root, Long.MIN_VALUE, Long.MAX_VALUE));
 	}
 
 }

@@ -4,7 +4,7 @@ public class BinarySearchTree {
 
 	TreeNode root;
 	
-	private class TreeNode{
+	 class TreeNode{
 		
 		TreeNode left;
 		TreeNode right;
@@ -71,5 +71,20 @@ return root;
 		}
 	}
 	
-	
+	public boolean isValid(TreeNode root ,long min, long max ) {
+		
+		if(root==null) {
+			return true;
+		}
+		if(root.element<min||root.element>max) {
+			return false;
+		}
+		boolean left = isValid(root.left,min,root.element);
+		if(left) {
+			
+			boolean right = isValid(root.right,root.element,max);
+			return right;
+		}
+		return false;
+	}
 }
